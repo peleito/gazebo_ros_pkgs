@@ -106,6 +106,10 @@ void GazeboRosOpenniKinect::Load(sensors::SensorPtr _parent, sdf::ElementPtr _sd
     this->point_cloud_cutoff_max_ = 5.0;
   else
     this->point_cloud_cutoff_max_ = _sdf->GetElement("pointCloudCutoffMax")->Get<double>();
+  if (!_sdf->HasElement("depthSTD"))
+    this->depth_std_ = 0.1;
+  else
+    this->depth_std_ = _sdf->GetElement("depthSTD")->Get<double>();
 
   // allow optional publication of depth images in 16UC1 instead of 32FC1
   if (!_sdf->HasElement("useDepth16UC1Format"))
@@ -352,11 +356,16 @@ bool GazeboRosOpenniKinect::FillPointCloudHelper(
 
     for (uint32_t i=0; i<cols_arg; i++, ++iter_x, ++iter_y, ++iter_z, ++iter_rgb)
     {
+      unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+      std::default_random_engine generator (seed);
+      std::normal_distribution<double> distribution (0.0,depth_std_);
+      double depth_noise = distribution(generator);
+
       double yAngle;
       if (cols_arg>1) yAngle = atan2( (double)i - 0.5*(double)(cols_arg-1), fl);
       else            yAngle = 0.0;
 
-      double depth = toCopyFrom[index++]; // + 0.0*this->myParent->GetNearClip();
+      double depth = toCopyFrom[index++] + depth_noise; // + 0.0*this->myParent->GetNearClip();
 
       if(depth > this->point_cloud_cutoff_ &&
          depth < this->point_cloud_cutoff_max_)

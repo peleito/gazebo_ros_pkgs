@@ -55,6 +55,9 @@
 // camera stuff
 #include <gazebo_plugins/gazebo_ros_camera_utils.h>
 
+#include <chrono>
+#include <random>
+
 namespace gazebo
 {
   class GazeboRosOpenniKinect : public DepthCameraPlugin, GazeboRosCameraUtils
@@ -119,6 +122,8 @@ namespace gazebo
     private: double point_cloud_cutoff_;
     /// \brief Maximum range of the point cloud
     private: double point_cloud_cutoff_max_;
+
+    private: double depth_std_;
 
     /// \brief ROS image topic name
     private: std::string point_cloud_topic_name_;

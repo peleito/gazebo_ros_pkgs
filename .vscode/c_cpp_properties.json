@@ -1,0 +1,56 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/trex/mobile_manipulator/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/trex/mobile_manipulator/src/moveit/moveit_planners/chomp/chomp_motion_planner/include/**",
+        "/home/trex/mobile_manipulator/src/Universal_Robots_ROS_Driver/controller_stopper/include/**",
+        "/home/trex/mobile_manipulator/src/gazebo_ros_pkgs/gazebo_plugins/include/**",
+        "/home/trex/mobile_manipulator/src/gazebo_ros_pkgs/gazebo_ros/include/**",
+        "/home/trex/mobile_manipulator/src/gazebo_ros_pkgs/gazebo_ros_control/include/**",
+        "/home/trex/mobile_manipulator/src/geometric_shapes/include/**",
+        "/home/trex/mobile_manipulator/src/hector_gazebo/hector_gazebo_plugins/include/**",
+        "/home/trex/mobile_manipulator/src/hector_gazebo/hector_gazebo_thermal_camera/include/**",
+        "/home/trex/mobile_manipulator/src/LMS1xx/include/**",
+        "/home/trex/mobile_manipulator/src/moveit/moveit_planners/chomp/chomp_interface/include/**",
+        "/home/trex/mobile_manipulator/src/moveit_resources/prbt_ikfast_manipulator_plugin/include/**",
+        "/home/trex/mobile_manipulator/src/moveit/moveit_ros/benchmarks/include/**",
+        "/home/trex/mobile_manipulator/src/moveit/moveit_plugins/moveit_ros_control_interface/include/**",
+        "/home/trex/mobile_manipulator/src/moveit/moveit_ros/move_group/include/**",
+        "/home/trex/mobile_manipulator/src/moveit/moveit_ros/occupancy_map_monitor/include/**",
+        "/home/trex/mobile_manipulator/src/moveit/moveit_ros/robot_interaction/include/**",
+        "/home/trex/mobile_manipulator/src/moveit/moveit_ros/moveit_servo/include/**",
+        "/home/trex/mobile_manipulator/src/moveit/moveit_setup_assistant/include/**",
+        "/home/trex/mobile_manipulator/src/moveit/moveit_plugins/moveit_simple_controller_manager/include/**",
+        "/home/trex/mobile_manipulator/src/moveit_visual_tools/include/**",
+        "/home/trex/mobile_manipulator/src/ouster_example/ouster_client/include/**",
+        "/home/trex/mobile_manipulator/src/ouster_example/ouster_gazebo_plugins/include/**",
+        "/home/trex/mobile_manipulator/src/ouster_example/ouster_ros/include/**",
+        "/home/trex/mobile_manipulator/src/ouster_example/ouster_viz/include/**",
+        "/home/trex/mobile_manipulator/src/moveit/moveit_planners/pilz_industrial_motion_planner/include/**",
+        "/home/trex/mobile_manipulator/src/moveit/moveit_planners/pilz_industrial_motion_planner_testutils/include/**",
+        "/home/trex/mobile_manipulator/src/pointgrey_camera_driver/pointgrey_camera_driver/include/**",
+        "/home/trex/mobile_manipulator/src/rviz_visual_tools/include/**",
+        "/home/trex/mobile_manipulator/src/sjtu-drone/include/**",
+        "/home/trex/mobile_manipulator/src/flir_camera_driver/spinnaker_camera_driver/include/**",
+        "/home/trex/mobile_manipulator/src/srdfdom/include/**",
+        "/home/trex/mobile_manipulator/src/Universal_Robots_ROS_Driver/ur_calibration/include/**",
+        "/home/trex/mobile_manipulator/src/universal_robot/ur_kinematics/include/**",
+        "/home/trex/mobile_manipulator/src/Universal_Robots_ROS_Driver/ur_robot_driver/include/**",
+        "/home/trex/mobile_manipulator/src/velodyne_simulator/velodyne_gazebo_plugins/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

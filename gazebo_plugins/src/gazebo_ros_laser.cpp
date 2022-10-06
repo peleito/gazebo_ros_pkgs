@@ -102,6 +102,13 @@ void GazeboRosLaser::Load(sensors::SensorPtr _parent, sdf::ElementPtr _sdf)
   else
     this->topic_name_ = this->sdf->Get<std::string>("topicName");
 
+  if (!_sdf->HasElement("noise")) {
+    ROS_INFO("2D laser plugin missing <noise>, defaults to 0.0");
+    this->gaussian_noise_ = 0.03;
+  } else {
+    this->gaussian_noise_ = _sdf->GetElement("noise")->Get<double>();
+  }
+
   this->laser_connect_count_ = 0;
 
     // Make sure the ROS node for Gazebo has already been initialized
@@ -199,11 +206,25 @@ void GazeboRosLaser::OnScan(ConstLaserScanStampedPtr &_msg)
   std::copy(_msg->scan().ranges().begin(),
             _msg->scan().ranges().end(),
             laser_msg.ranges.begin());
+
+  if (this->gaussian_noise_ != 0.0) {
+    this->noise_ = gaussianKernel(0,this->gaussian_noise_);
+
+    for (int i = 0; i<laser_msg.ranges.size(); i++)
+    {
+      this->noise_ = gaussianKernel(0,this->gaussian_noise_);
+      laser_msg.ranges[i] += this->noise_;
+    }
+  }
+  // ROS_INFO_NAMED("laser", "Laser Plugin (ns = %f)",
+  //            this->noise_);
+
   laser_msg.intensities.resize(_msg->scan().intensities_size());
   std::copy(_msg->scan().intensities().begin(),
             _msg->scan().intensities().end(),
             laser_msg.intensities.begin());
   this->pub_queue_->push(laser_msg, this->pub_);
+  // this->pub_.publish(laser_msg);
 #ifdef ENABLE_PROFILER
   IGN_PROFILE_END();
 #endif
